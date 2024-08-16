@@ -1,0 +1,18 @@
+{
+  "root": true,
+  "env": {
+    "es6": true,
+    "node": true,
+    "jest": true
+  },
+  "parserOptions": {
+    "ecmaVersion": "latest"
+  },
+  "plugins": ["prettier"],
+  "extends": ["eslint:recommended", "prettier"],
+  "rules": {
+    "no-async-promise-executor": 1,
+    "prettier/prettier": 1,
+    "no-unused-vars": 0
+  }
+}

@@ -1,0 +1,9 @@
+{
+  "displayName": "career-connect-app-test",
+  "verbose": true,
+  "roots": ["src/"],
+  "collectCoverage": true,
+  "collectCoverageFrom": ["**/src/routes/**", "!**/src/routes/test/**"],
+  "coverageReporters": ["html", "text", "text-summary", "cobertura"],
+  "testMatch": ["**/*.test.js"]
+}
