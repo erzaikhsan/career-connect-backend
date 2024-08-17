@@ -4,11 +4,7 @@ const {
   CertificatesControllers
 } = require('../controllers');
 const express = require('express');
-const {
-  StorageCertificates,
-  StorageCV,
-  authMiddleware
-} = require('../middlewares');
+const { authMiddleware } = require('../middlewares');
 const { validator } = require('../middlewares');
 const { ROLES } = require('../utils/constants');
 const path = require('path');
@@ -16,8 +12,6 @@ const path = require('path');
 
 const router = express.Router();
 const { validate, requirements } = validator;
-const uploadCV = StorageCV;
-const uploadCertificate = StorageCertificates;
 // const uploadPath = path.join(__dirname, '../../public/uploads');
 
 router.get('/:id', UserControllers.GetUserProfile);
@@ -33,7 +27,6 @@ router.put(
   '/profile/cv',
   authMiddleware.authenticate,
   authMiddleware.authorize(ROLES.JOBSEEKER),
-  uploadCV.single('file'),
   CVControllers.UpdateCV
 );
 
@@ -48,7 +41,6 @@ router.post(
   '/certificates',
   authMiddleware.authenticate,
   authMiddleware.authorize(ROLES.JOBSEEKER),
-  uploadCertificate.single('file'),
   [validate(requirements.addCertificate)],
   CertificatesControllers.AddCeritificates
 );
