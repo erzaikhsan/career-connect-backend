@@ -17,6 +17,7 @@ require('dotenv').config();
 const db = new Sequelize(process.env.POSTGRES_URL, {
   dialect: 'postgres',
   protocol: 'postgres',
+  dialectModule: pg,
   dialectOptions: {
     ssl: {
       require: true,
