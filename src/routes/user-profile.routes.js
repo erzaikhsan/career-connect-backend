@@ -12,13 +12,13 @@ const {
 const { validator } = require('../middlewares');
 const { ROLES } = require('../utils/constants');
 const path = require('path');
-const logger = require('../utils/logger');
+// const logger = require('../utils/logger');
 
 const router = express.Router();
 const { validate, requirements } = validator;
 const uploadCV = StorageCV;
 const uploadCertificate = StorageCertificates;
-const uploadPath = path.join(__dirname, '../../public/uploads');
+// const uploadPath = path.join(__dirname, '../../public/uploads');
 
 router.get('/:id', UserControllers.GetUserProfile);
 router.put(
@@ -60,30 +60,30 @@ router.delete(
   CertificatesControllers.DeleteCertificates
 );
 
-router.get('/certificates/:id/:filename', (req, res) => {
-  const filename = req.params.filename;
-  const userId = req.params.id;
-  const filePath = path.join(uploadPath, `${userId}/certificates`, filename);
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      logger.error(err);
-      res.status(500).end();
-    }
-  });
-});
+// router.get('/certificates/:id/:filename', (req, res) => {
+//   const filename = req.params.filename;
+//   const userId = req.params.id;
+//   const filePath = path.join(uploadPath, `${userId}/certificates`, filename);
+//   res.sendFile(filePath, (err) => {
+//     if (err) {
+//       logger.error(err);
+//       res.status(500).end();
+//     }
+//   });
+// });
 
-router.get('/cv/:id/:filename', (req, res) => {
-  const filename = req.params.filename;
-  const userId = req.params.id;
-  logger.info(filename);
-  logger.info(userId);
-  const filePath = path.join(uploadPath, `${userId}`, filename);
-  res.sendFile(filePath, (err) => {
-    if (err) {
-      logger.error(err);
-      res.status(500).end();
-    }
-  });
-});
+// router.get('/cv/:id/:filename', (req, res) => {
+//   const filename = req.params.filename;
+//   const userId = req.params.id;
+//   logger.info(filename);
+//   logger.info(userId);
+//   const filePath = path.join(uploadPath, `${userId}`, filename);
+//   res.sendFile(filePath, (err) => {
+//     if (err) {
+//       logger.error(err);
+//       res.status(500).end();
+//     }
+//   });
+// });
 
 module.exports = router;
