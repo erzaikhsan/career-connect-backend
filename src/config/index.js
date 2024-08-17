@@ -14,9 +14,16 @@ require('dotenv').config();
 //     }
 //   }
 // });
-const db = new Sequelize(
-  'postgres://default:MQKTvuNFl8z4@ep-long-mountain-a4jewc8j-pooler.us-east-1.aws.neon.tech/verceldb?sslmode=require'
-);
+const db = new Sequelize(process.env.DATABASE_URL, {
+  dialect: 'postgres',
+  protocol: 'postgres',
+  dialectOptions: {
+    ssl: {
+      require: true,
+      rejectUnauthorized: false
+    }
+  }
+});
 
 const port = process.env.PORT_APP || 3000;
 const api = process.env.API_PATH || 'api/v1';
