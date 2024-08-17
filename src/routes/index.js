@@ -7,11 +7,7 @@ const PhotoRoutes = require('./photo-profile.routes');
 const applicationsRoutes = require('./applications.routes');
 const usersRoutes = require('./users.routes');
 
-async function getReady(req, res) {
-  res.status(200).json({ message: 'Hello from the backend!' });
-}
 const router = Router();
-router.use('/', getReady);
 router.use('/jobs', jobsRoutes);
 router.use('/auth', authRoute);
 router.use('/companies', companiesRoutes);
