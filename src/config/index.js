@@ -3,16 +3,16 @@ require('dotenv').config();
 
 const db = new Sequelize({
   dialect: 'postgres',
-  host: process.env.DB_HOST,
-  port: process.env.DB_PORT,
-  username: process.env.DB_USER,
-  password: process.env.DB_PASSWORD,
-  database: process.env.DB_NAME,
-  // dialectOptions: {
-  //   ssl: {
-  //     rejectUnauthorized: false
-  //   }
-  // }
+  host: process.env.POSTGRES_HOST,
+  // port: process.env.DB_PORT,
+  username: process.env.POSTGRES_USER,
+  password: process.env.POSTGRES_PASSWORD,
+  database: process.env.POSTGRES_DATABASE,
+  dialectOptions: {
+    ssl: {
+      rejectUnauthorized: false
+    }
+  }
 });
 
 const port = process.env.PORT_APP || 3000;
