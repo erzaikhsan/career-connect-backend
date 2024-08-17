@@ -40,10 +40,9 @@ const transports = [
 ];
 
 const logger = winston.createLogger({
-  level: 'debug',
-  levels,
-  format,
-  transports
+  level: 'info',
+  format: winston.format.json(),
+  transports: [new winston.transports.Console()]
 });
 
 module.exports = logger;
